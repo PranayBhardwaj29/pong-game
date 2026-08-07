@@ -1,13 +1,14 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "Paddle.h"
 
 class Game {
 private:
     sf::RenderWindow window;
 
-    sf::RectangleShape paddle1;
-    sf::RectangleShape paddle2;
+    Paddle paddle1;
+    Paddle paddle2;
     
     sf::CircleShape ball;
 

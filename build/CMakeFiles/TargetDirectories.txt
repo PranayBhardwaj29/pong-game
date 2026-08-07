@@ -1,0 +1,3 @@
+/home/pranay-bhardwaj/projects/pong-game/build/CMakeFiles/pong.dir
+/home/pranay-bhardwaj/projects/pong-game/build/CMakeFiles/edit_cache.dir
+/home/pranay-bhardwaj/projects/pong-game/build/CMakeFiles/rebuild_cache.dir

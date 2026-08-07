@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/pranay-bhardwaj/projects/pong-game/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

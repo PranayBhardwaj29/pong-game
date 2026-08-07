@@ -3,4 +3,14 @@
 Game::Game()
     : window(sf::VideoMode({1600, 900}), "Pong")
 {
+    
+}
+
+void Game::run()
+{
+    while (window.isOpen())
+    {
+        
+    }
+    
 }

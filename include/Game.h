@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "Paddle.h"
+#include "Ball.h"
 
 class Game {
 private:
@@ -10,7 +11,7 @@ private:
     Paddle paddle1;
     Paddle paddle2;
     
-    sf::CircleShape ball;
+    Ball ball;
 
 public:
     Game();

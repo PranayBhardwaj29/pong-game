@@ -3,22 +3,21 @@
 Game::Game()
     : window(sf::VideoMode({1600, 900}), "Pong")
 {
-    
-    // Paddle 1
-    paddle1.setSize({20.f, 150.f});
-    paddle1.setPosition({50.f, 375.f});
+    window.setFramerateLimit(60);
+
+    paddle1.setSize({50.f, 200.f});
+    paddle1.setPosition({100.f, 350.f});
     paddle1.setFillColor(sf::Color::White);
-    
-    // Paddle 2
-    paddle2.setSize({20.f, 150.f});
-    paddle2.setPosition({1530.f, 375.f});
+
+    paddle2.setSize({50.f, 200.f});
+    paddle2.setPosition({1450.f, 350.f});
     paddle2.setFillColor(sf::Color::White);
-    
-    // Ball
-    ball.setRadius(10.f);
-    ball.setPosition({790.f, 440.f});
-    ball.setFillColor(sf::Color::White);
+
+    ball.setRadius(50.f);
+    ball.setPosition({750.f, 400.f});
+    ball.setFillColor(sf::Color::Red);
 }
+
 
 void Game::run()
 {
@@ -27,14 +26,19 @@ void Game::run()
         while (auto event = window.pollEvent())
         {
             if (event->is<sf::Event::Closed>())
+            {
                 window.close();
+            }
         }
-        
-        window.clear();
+
+
+        window.clear(sf::Color::Black);
+
 
         window.draw(paddle1);
         window.draw(paddle2);
         window.draw(ball);
+
 
         window.display();
     }

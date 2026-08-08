@@ -8,6 +8,11 @@ Game::Game()
       ball(750.f, 400.f)
 {
     window.setFramerateLimit(60);
+
+    font.openFromFile("font/DejaVuSans.ttf");
+
+    startText = new sf::Text(font, "Press Enter to Start", 40);
+    startText->setPosition({600.f, 400.f});
 }
 
 void Game::run()
@@ -42,17 +47,27 @@ void Game::run()
             paddle2.move(paddleSpeed * deltaTime);
         }
 
-        ball.move(deltaTime);
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter))
+        {
+            gameStarted = true;
+        }
+
+        if (gameStarted)
+        {
+            ball.move(deltaTime);
+        }
 
         auto ballBounds = ball.getShape().getGlobalBounds();
 
         if (ballBounds.position.x + ballBounds.size.x < 0) {
             // Player 2 scores
+            gameStarted = false;
             ball.reset();
         }
 
         if (ballBounds.position.x > 1600) {
             // Player 1 scores
+            gameStarted = false;
             ball.reset();
         }
 
@@ -96,6 +111,11 @@ void Game::run()
         paddle2.draw(window);
         
         ball.draw(window);
+
+        if (!gameStarted)
+        {
+            window.draw(*startText);
+        }
 
         window.display();
     }

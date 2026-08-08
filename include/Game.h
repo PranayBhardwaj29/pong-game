@@ -13,6 +13,9 @@ private:
     
     Ball ball;
 
+    sf::Font font;
+    sf::Text* startText;
+
 public:
     Game();
 

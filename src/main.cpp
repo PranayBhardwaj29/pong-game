@@ -9,11 +9,5 @@ int main()
 }
 
 // to run use this 
-// g++ src/*.cpp \
-// -Iinclude \
-// -lsfml-graphics \
-// -lsfml-window \
-// -lsfml-system \
-// -o pong
-
+// g++ src/*.cpp \-Iinclude \-lsfml-graphics \-lsfml-window \-lsfml-system \-o pong
 // ./pong

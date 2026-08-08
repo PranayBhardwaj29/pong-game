@@ -23,8 +23,20 @@ void Paddle::move(float amount)
     sf::Vector2f pos = shape.getPosition();
     float currentX = pos.x;
     float currentY = pos.y;
+
     // The paddle moves by a certain amount in Y direction
-    float newYPositition = currentY + amount;
+    float newYPosition = currentY + amount;
+
+    // check if newYposition does not go above the boundary
+    if (newYPosition < 0) {
+        newYPosition = 0;
+    }
+
+    // check if newYposition does not go below the boundary or window
+    if (newYPosition > 700) {
+        newYPosition = 700;
+    }
+    
     // We set the new position to paddle
-    shape.setPosition({currentX, newYPositition});
+    shape.setPosition({currentX, newYPosition});
 }

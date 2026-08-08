@@ -30,6 +30,14 @@ void Game::run()
             paddle1.move(paddleSpeed / 60.f);
         }
 
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) {
+            paddle2.move(-paddleSpeed / 60.f);
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) {
+            paddle2.move(paddleSpeed / 60.f);
+        }
+
         window.clear(sf::Color::Black);
 
         paddle1.draw(window);

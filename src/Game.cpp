@@ -57,7 +57,24 @@ void Game::run()
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter))
         {
-            gameStarted = true;
+            if (gameOver)
+            {
+                player1Score = 0;
+                player2Score = 0;
+
+                scoreText->setString(
+                    std::to_string(player1Score) + "   " +
+                    std::to_string(player2Score)
+                );
+
+                gameOver = false;
+                ball.reset();
+                gameStarted = true;
+            }
+            else
+            {
+                gameStarted = true;
+            }
         }
 
         if (gameStarted)

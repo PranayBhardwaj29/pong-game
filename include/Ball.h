@@ -19,4 +19,8 @@ public:
     void move(float deltaTime);
 
     void bounceX();
+
+    void speedUp();
+
+    void changeAngle();
 };

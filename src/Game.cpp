@@ -45,9 +45,12 @@ void Game::run()
         ball.move(deltaTime);
 
         // Player 1 collision
-        if (ball.getShape().getGlobalBounds().findIntersection(paddle1.getShape().getGlobalBounds()))
+        if (ball.getShape().getGlobalBounds().findIntersection(
+                paddle1.getShape().getGlobalBounds()))
         {
             ball.bounceX();
+            ball.speedUp();
+            ball.changeAngle();
 
             auto ballBounds = ball.getShape().getGlobalBounds();
             auto paddleBounds = paddle1.getShape().getGlobalBounds();
@@ -59,9 +62,12 @@ void Game::run()
         }
 
         // Player 2 collision
-        if (ball.getShape().getGlobalBounds().findIntersection(paddle2.getShape().getGlobalBounds()))
+        if (ball.getShape().getGlobalBounds().findIntersection(
+                paddle2.getShape().getGlobalBounds()))
         {
             ball.bounceX();
+            ball.speedUp();
+            ball.changeAngle();
 
             auto ballBounds = ball.getShape().getGlobalBounds();
             auto paddleBounds = paddle2.getShape().getGlobalBounds();

@@ -1,6 +1,9 @@
 #include "Ball.h"
 #include <cstdlib>
 #include <ctime>
+#include <cmath>
+
+const float maxBallSpeed = 1100.f;
 
 Ball::Ball(float x, float y)
 {
@@ -54,4 +57,44 @@ void Ball::move(float deltaTime)
 void Ball::bounceX()
 {
     velocity.x = -velocity.x;
+}
+
+void Ball::speedUp()
+{
+    velocity *= 1.1f;
+
+    if (std::abs(velocity.x) > maxBallSpeed)
+    {
+        velocity.x = (velocity.x > 0) ? maxBallSpeed : -maxBallSpeed;
+    }
+
+    if (std::abs(velocity.y) > maxBallSpeed)
+    {
+        velocity.y = (velocity.y > 0) ? maxBallSpeed : -maxBallSpeed;
+    }
+}
+
+void Ball::changeAngle()
+{
+    // Get current speed
+    float speed = std::sqrt(
+        velocity.x * velocity.x + velocity.y * velocity.y
+    );
+
+    // Random angle between 20 and 60 degrees
+    float angle = static_cast<float>(
+        (std::rand() % 41) + 20
+    );
+
+    // Convert degrees to radians
+    float radians = angle * 3.14159265f / 180.f;
+
+    // Keep the current horizontal direction
+    float directionX = velocity.x > 0 ? 1.f : -1.f;
+
+    // Randomly choose whether the ball goes up or down
+    float directionY = (std::rand() % 2 == 0) ? 1.f : -1.f;
+
+    velocity.x = directionX * speed * std::cos(radians);
+    velocity.y = directionY * speed * std::sin(radians);
 }

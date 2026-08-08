@@ -14,7 +14,13 @@ private:
     Ball ball;
 
     sf::Font font;
+
+    int player1Score = 0;  
+    int player2Score = 0;
+
+    sf::Text* scoreText;
     sf::Text* startText;
+    sf::Text* winnerText;
 
 public:
     Game();
@@ -22,4 +28,5 @@ public:
     void run();
 
     bool gameStarted = false;
+    bool gameOver = false;
 };

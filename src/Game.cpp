@@ -1,4 +1,6 @@
 #include "Game.h"
+#include <string>
+
 const float paddleSpeed = 500.f;
 
 Game::Game()
@@ -13,6 +15,12 @@ Game::Game()
 
     startText = new sf::Text(font, "Press Enter to Start", 40);
     startText->setPosition({600.f, 400.f});
+
+    scoreText = new sf::Text(font, "0   0", 50);
+    scoreText->setPosition({750.f, 30.f});
+
+    winnerText = new sf::Text(font, "", 50);
+    winnerText->setPosition({600.f, 400.f});
 }
 
 void Game::run()
@@ -61,12 +69,38 @@ void Game::run()
 
         if (ballBounds.position.x + ballBounds.size.x < 0) {
             // Player 2 scores
+            player2Score++;
+            scoreText->setString(
+                std::to_string(player1Score) + "   " +
+                std::to_string(player2Score)
+            );
+
+            if (player2Score >= 5)
+            {
+                winnerText->setString("Player 2 Wins!");
+                gameOver = true;
+                gameStarted = false;
+            }
+
             gameStarted = false;
             ball.reset();
         }
 
         if (ballBounds.position.x > 1600) {
             // Player 1 scores
+            player1Score++;
+            scoreText->setString(
+                std::to_string(player1Score) + "   " +
+                std::to_string(player2Score)
+            );
+
+            if (player1Score >= 5)
+            {
+                winnerText->setString("Player 1 Wins!");
+                gameOver = true;
+                gameStarted = false;
+            }
+
             gameStarted = false;
             ball.reset();
         }
@@ -106,15 +140,22 @@ void Game::run()
         }
 
         window.clear(sf::Color::Black);
-
+        
         paddle1.draw(window);
         paddle2.draw(window);
         
         ball.draw(window);
 
-        if (!gameStarted)
+        window.draw(*scoreText);
+
+        if (!gameStarted  && !gameOver)
         {
             window.draw(*startText);
+        }
+
+        if (gameOver)
+        {
+            window.draw(*winnerText);
         }
 
         window.display();

@@ -1,4 +1,5 @@
 #include "Game.h"
+const float paddleSpeed = 500.f;
 
 Game::Game()
     : window(sf::VideoMode({1600, 900}), "Pong"),
@@ -19,6 +20,14 @@ void Game::run()
             {
                 window.close();
             }
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
+            paddle1.move(-paddleSpeed / 60.f);
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
+            paddle1.move(paddleSpeed / 60.f);
         }
 
         window.clear(sf::Color::Black);

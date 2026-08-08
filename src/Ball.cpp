@@ -27,6 +27,11 @@ void Ball::move()
     
     float newX = currentX + velocity.x;
     float newY = currentY + velocity.y;
+    
+    if (newY < 50 || newY > 800)
+    {
+        velocity.y = -velocity.y;
+    }
 
     shape.setPosition({newX, newY});
 }

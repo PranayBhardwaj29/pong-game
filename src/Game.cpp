@@ -11,7 +11,7 @@ Game::Game()
 {
     window.setFramerateLimit(60);
 
-    font.openFromFile("font/DejaVuSans.ttf");
+    font.openFromFile("font/LiberationSans-Regular.ttf");
 
     startText = new sf::Text(font, "Press Enter to Start", 40);
     startText->setPosition({600.f, 400.f});

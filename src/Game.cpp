@@ -38,6 +38,8 @@ void Game::run()
             paddle2.move(paddleSpeed / 60.f);
         }
 
+        ball.move();
+
         window.clear(sf::Color::Black);
 
         paddle1.draw(window);

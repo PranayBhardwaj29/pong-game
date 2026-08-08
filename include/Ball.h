@@ -23,4 +23,6 @@ public:
     void speedUp();
 
     void changeAngle();
+
+    void reset();
 };

@@ -44,6 +44,18 @@ void Game::run()
 
         ball.move(deltaTime);
 
+        auto ballBounds = ball.getShape().getGlobalBounds();
+
+        if (ballBounds.position.x + ballBounds.size.x < 0) {
+            // Player 2 scores
+            ball.reset();
+        }
+
+        if (ballBounds.position.x > 1600) {
+            // Player 1 scores
+            ball.reset();
+        }
+
         // Player 1 collision
         if (ball.getShape().getGlobalBounds().findIntersection(
                 paddle1.getShape().getGlobalBounds()))

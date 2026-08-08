@@ -17,4 +17,6 @@ public:
     Game();
 
     void run();
+
+    bool gameStarted = false;
 };

@@ -98,3 +98,23 @@ void Ball::changeAngle()
     velocity.x = directionX * speed * std::cos(radians);
     velocity.y = directionY * speed * std::sin(radians);
 }
+
+void Ball::reset() 
+{
+    shape.setPosition({750.f, 400.f});
+    
+    std::srand(static_cast<unsigned>(std::time(nullptr)));
+
+    float randomY;
+
+    do
+    {
+        randomY = static_cast<float>((std::rand() % 601) - 300);
+    }
+    while (std::abs(randomY) < 150);
+
+    velocity = {
+        (std::rand() % 2 == 0 ? 500.f : -500.f),
+        randomY
+    };
+}

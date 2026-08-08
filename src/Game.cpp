@@ -44,15 +44,32 @@ void Game::run()
 
         ball.move(deltaTime);
 
-        // collision happened
+        // Player 1 collision
         if (ball.getShape().getGlobalBounds().findIntersection(paddle1.getShape().getGlobalBounds()))
         {
             ball.bounceX();
+
+            auto ballBounds = ball.getShape().getGlobalBounds();
+            auto paddleBounds = paddle1.getShape().getGlobalBounds();
+
+            ball.getShape().setPosition({
+                paddleBounds.position.x + paddleBounds.size.x,
+                ballBounds.position.y
+            });
         }
 
+        // Player 2 collision
         if (ball.getShape().getGlobalBounds().findIntersection(paddle2.getShape().getGlobalBounds()))
         {
             ball.bounceX();
+
+            auto ballBounds = ball.getShape().getGlobalBounds();
+            auto paddleBounds = paddle2.getShape().getGlobalBounds();
+
+            ball.getShape().setPosition({
+                paddleBounds.position.x - ballBounds.size.x,
+                ballBounds.position.y
+            });
         }
 
         window.clear(sf::Color::Black);

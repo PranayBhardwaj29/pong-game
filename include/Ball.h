@@ -17,4 +17,6 @@ public:
     sf::CircleShape& getShape();
 
     void move();
+
+    void bounceX();
 };

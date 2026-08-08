@@ -40,6 +40,17 @@ void Game::run()
 
         ball.move();
 
+        // collision happened
+        if (ball.getShape().getGlobalBounds().findIntersection(paddle1.getShape().getGlobalBounds()))
+        {
+            ball.bounceX();
+        }
+
+        if (ball.getShape().getGlobalBounds().findIntersection(paddle2.getShape().getGlobalBounds()))
+        {
+            ball.bounceX();
+        }
+
         window.clear(sf::Color::Black);
 
         paddle1.draw(window);

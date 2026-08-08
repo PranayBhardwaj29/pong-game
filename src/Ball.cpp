@@ -35,3 +35,8 @@ void Ball::move()
 
     shape.setPosition({newX, newY});
 }
+
+void Ball::bounceX()
+{
+    velocity.x = -velocity.x;
+}

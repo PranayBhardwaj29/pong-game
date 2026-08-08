@@ -7,3 +7,13 @@ int main()
     
     return 0;
 }
+
+// to run use this 
+//g++ src/*.cpp \
+-Iinclude \
+-lsfml-graphics \
+-lsfml-window \
+-lsfml-system \
+-o pong
+
+// ./pong

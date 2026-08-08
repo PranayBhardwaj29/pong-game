@@ -2,8 +2,8 @@
 
 Game::Game()
     : window(sf::VideoMode({1600, 900}), "Pong"),
-      paddle1(100.f, 350.f),
-      paddle2(1450.f, 350.f),
+      paddle1(50.f, 350.f),
+      paddle2(1500.f, 350.f),
       ball(750.f, 400.f)
 {
     window.setFramerateLimit(60);

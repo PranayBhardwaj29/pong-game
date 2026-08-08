@@ -1,4 +1,6 @@
 #include "Ball.h"
+#include <cstdlib>
+#include <ctime>
 
 Ball::Ball(float x, float y)
 {
@@ -6,7 +8,20 @@ Ball::Ball(float x, float y)
     shape.setPosition({x, y});
     shape.setFillColor(sf::Color::Red);
 
-    velocity = {5.f, 3.f};
+    std::srand(static_cast<unsigned>(std::time(nullptr)));
+
+    float randomY;
+
+    do
+    {
+        randomY = static_cast<float>((std::rand() % 601) - 300);
+    }
+    while (std::abs(randomY) < 150);
+
+    velocity = {
+        (std::rand() % 2 == 0 ? 500.f : -500.f),
+        randomY
+    };
 }
 
 void Ball::draw(sf::RenderWindow& window)
@@ -19,14 +34,14 @@ sf::CircleShape& Ball::getShape()
     return shape;
 }
 
-void Ball::move()
+void Ball::move(float deltaTime)
 {
     sf::Vector2f pos = shape.getPosition();
     float currentX = pos.x;
     float currentY = pos.y;
     
-    float newX = currentX + velocity.x;
-    float newY = currentY + velocity.y;
+    float newX = currentX + velocity.x * deltaTime;
+    float newY = currentY + velocity.y * deltaTime;
     
     if (newY < 50 || newY > 800)
     {

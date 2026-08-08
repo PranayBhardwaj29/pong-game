@@ -16,7 +16,7 @@ public:
 
     sf::CircleShape& getShape();
 
-    void move();
+    void move(float deltaTime);
 
     void bounceX();
 };

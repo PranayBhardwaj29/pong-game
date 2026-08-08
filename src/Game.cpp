@@ -12,8 +12,12 @@ Game::Game()
 
 void Game::run()
 {
+    sf::Clock clock;
+
     while (window.isOpen())
     {
+        float deltaTime = clock.restart().asSeconds();
+
         while (auto event = window.pollEvent())
         {
             if (event->is<sf::Event::Closed>())
@@ -23,22 +27,22 @@ void Game::run()
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
-            paddle1.move(-paddleSpeed / 60.f);
+            paddle1.move(-paddleSpeed * deltaTime);
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
-            paddle1.move(paddleSpeed / 60.f);
+            paddle1.move(paddleSpeed * deltaTime);
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) {
-            paddle2.move(-paddleSpeed / 60.f);
+            paddle2.move(-paddleSpeed * deltaTime);
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) {
-            paddle2.move(paddleSpeed / 60.f);
+            paddle2.move(paddleSpeed * deltaTime);
         }
 
-        ball.move();
+        ball.move(deltaTime);
 
         // collision happened
         if (ball.getShape().getGlobalBounds().findIntersection(paddle1.getShape().getGlobalBounds()))

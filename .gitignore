@@ -1,0 +1,14 @@
+# VS Code
+.vscode/
+
+# Build output
+pong
+
+# Object files
+*.o
+
+# Compiled binaries
+*.out
+
+# OS files
+.DS_Store
